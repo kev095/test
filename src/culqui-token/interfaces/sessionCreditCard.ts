@@ -1,8 +1,8 @@
-export default interface ICreditCard {
-    email: string;
+export default interface Session {
     card_number: number;
     cvv: number;
     expiration_year: string;
     expiration_month: string;
-    token: string;
+    issued: number;
+    expires: number;
 }

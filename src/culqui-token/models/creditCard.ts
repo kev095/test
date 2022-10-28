@@ -1,5 +1,4 @@
-import { Schema, model, Model, Types } from 'mongoose';
-import { number } from 'yup';
+import { Schema, model } from 'mongoose';
 import ICreditCard from '../interfaces/creditCard';
 
 const CreditCardSchema = new Schema<ICreditCard>({
@@ -8,6 +7,7 @@ const CreditCardSchema = new Schema<ICreditCard>({
     cvv: { type: Number },
     expiration_year: { type: String },
     expiration_month: { type: String },
+    token: { type: String },
 });
 
 export default model('CreditCard', CreditCardSchema);

@@ -3,16 +3,48 @@ import CreditCardModel from './models/creditCard';
 import db from './config/mongo';
 import { encodeCreditCard } from './utils/encodeCreditCard';
 import { validateCreditCard, yupValidationError } from './utils/validateCreditCard';
+import { DecodeResult } from './interfaces/decodeResult';
+import { decodeCreditCard } from './utils/decodeCreditCard';
+import { checkExpirationStatus } from './utils/checkExpirationStatus';
 
 db().then(() => console.log('Conexion Ready'));
 
 export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     let response: APIGatewayProxyResult;
+
     try {
-        response = {
-            statusCode: 200,
-            body: JSON.stringify('token okokkk'),
-        };
+        const token = event.headers.Authorization as string;
+        const PK = event.headers.pk;
+        if (!PK) {
+            response = {
+                statusCode: 500,
+                body: JSON.stringify({
+                    message: 'pk is invalid',
+                }),
+            };
+            return response;
+        }
+        //const creditCard = await CreditCardModel.findOne({ token: token });
+
+        const decode: DecodeResult = decodeCreditCard(token);
+        if (decode.type === 'invalid-token') {
+            response = {
+                statusCode: 500,
+                body: JSON.stringify({ error: 'invalid token' }),
+            };
+        }
+        const expiration = checkExpirationStatus(decode.sessioncreditCard);
+        if (expiration === 'expired') {
+            response = {
+                statusCode: 500,
+                body: JSON.stringify({ mess: 'token has expired' }),
+            };
+        } else if (expiration === 'active') {
+            response = {
+                statusCode: 200,
+                body: JSON.stringify(decode.sessioncreditCard),
+            };
+        }
     } catch (err: unknown) {
         console.log(err);
         response = {
@@ -37,10 +69,10 @@ export const tokenHandler = async (event: APIGatewayProxyEvent): Promise<APIGate
             ...reqBody,
         };
 
-        const newCreditCard = new CreditCardModel(creditCard);
+        const token = encodeCreditCard(creditCard);
+        const newCreditCard = new CreditCardModel({ ...creditCard, token: token.token });
         const savedCreditCard = await newCreditCard.save();
         if (savedCreditCard) {
-            const token = encodeCreditCard('secret');
             response = {
                 statusCode: 200,
                 body: JSON.stringify(token),
