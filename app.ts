@@ -1,5 +1,5 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import CreditCardModel from './src/models/creditCard';
+import CreditCardModel from './src/model/Card';
 import db from './src/config/mongo';
 import { encodeCreditCard } from './src/utils/encodeCreditCard';
 import { validateCreditCard, yupValidationError } from './src/utils/validateCreditCard';
