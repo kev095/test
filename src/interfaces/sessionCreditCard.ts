@@ -1,7 +1,6 @@
 /**
  * @deprecated
  */
-
 export default interface Session {
   card_number: number;
   expiration_year: string;
