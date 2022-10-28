@@ -15,10 +15,10 @@
   },
   "scripts": {
     "compile": "tsc",
-    "test": "jest",
+    "test": "NODE_ENV=test jest --maxWorkers=75%",
     "lint:check": "eslint --fix-dry-run --ext .ts,.test.ts",
     "lint": "eslint --fix --ext .ts,.test.ts",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(ts)\"",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(ts)\""
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.92",
