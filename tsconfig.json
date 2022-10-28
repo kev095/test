@@ -1,5 +1,5 @@
 {
-  "include": ["./src", "app.ts"],
+  "include": ["./src", "./app.ts"],
   "exclude": ["./node_modules"],
   "compilerOptions": {
     "rootDir": ".",
@@ -13,6 +13,6 @@
     "esModuleInterop": true,
     "moduleResolution":"node",
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-  },
+    "forceConsistentCasingInFileNames": true
+  }
 }
