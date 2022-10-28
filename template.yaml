@@ -17,7 +17,7 @@ Resources:
   TokenFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: src/culqui-token/
+      CodeUri: src/
       Handler: app.lambdaHandler
       Runtime: nodejs16.x
       Architectures:
@@ -40,7 +40,7 @@ Resources:
   CreateTokenFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: src/culqui-token/
+      CodeUri: src/
       Handler: app.tokenHandler
       Runtime: nodejs16.x
       Architectures:

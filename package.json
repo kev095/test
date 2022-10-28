@@ -13,13 +13,13 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "compile": "tsc",
+    "compile": "tsc --outDir ./build app.ts",
     "test": "NODE_ENV=test jest --maxWorkers=75%",
     "lint:check": "eslint --fix-dry-run --ext .ts,.test.ts",
     "lint": "eslint --fix --ext .ts,.test.ts",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(ts)\"",
     "watch": "nodemon ./app.ts",
-    "start": "npm run compile && node ./.aws-sam/app.js"
+    "start": "npm run compile && node ./build/app.js"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.92",
