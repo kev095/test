@@ -13,7 +13,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "compile": "tsc",
+    "compile": "tsc --outDir ./.aws-sam app.ts",
     "test": "NODE_ENV=test jest --maxWorkers=75%",
     "lint:check": "eslint --fix-dry-run --ext .ts,.test.ts",
     "lint": "eslint --fix --ext .ts,.test.ts",

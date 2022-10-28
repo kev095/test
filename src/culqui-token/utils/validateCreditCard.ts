@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-// validation CardCredit
+
 export const yupValidationError = Yup.ValidationError;
 export const validateCreditCard = Yup.object().shape({
   card_number: Yup.string().min(13).max(16),

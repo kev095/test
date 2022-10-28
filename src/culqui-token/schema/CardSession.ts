@@ -1,4 +1,4 @@
-export default interface Session {
+export interface CardSession {
   card_number: number;
   expiration_year: string;
   expiration_month: string;

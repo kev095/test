@@ -1,4 +1,8 @@
 import ISessionCreditCard from '../interfaces/sessionCreditCard';
+/**
+ * @deprecated
+ */
+
 export type DecodeResult =
   | {
       sessioncreditCard: ISessionCreditCard;
@@ -7,5 +11,9 @@ export type DecodeResult =
   | {
       type: 'invalid-token';
     };
+
+/**
+ * @deprecated
+ */
 
 export type ExpirationStatus = 'expired' | 'active';
