@@ -1,0 +1,47 @@
+{
+  "env": {
+    "node": true,
+    "browser": false
+  },
+  "ignorePatterns": [
+    "/node_modules"
+  ],
+  "extends": [
+    "airbnb-base"
+  ],
+  "parser": "@typescript-estlint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "prettier/recommended",
+    "@typescript-eslint/recommended"
+  ],
+  "rules": {},
+  "overrides": [
+    {
+      "files": ["src/**/*.ts"],
+      "excludedFiles": ["src/**/*.(test|spec).ts"],
+      "rules": {
+        "no-use-before-define": "off",
+        "no-console": "off",
+        "import/no-unresolved": "off",
+        "no-unused-vars": "off",
+        "semi": "off",
+        "class-methods-use-this": "off",
+        "brace-style": "off",
+        "indent": "off",
+        "comma-dangle": "off"
+      }
+    },
+    {
+      "files": ["test/**/*.test.ts"],
+      "rules": {
+        "import/extensions": "off",
+        "import/no-unresolved": "off",
+        "no-undef": "off"
+      }
+    }
+  ]
+}
