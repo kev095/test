@@ -9,4 +9,4 @@ export class CardValidator extends AbstractValidator {
   }
 }
 
-export default new CardValidator();
+export const cardValidator = new CardValidator();

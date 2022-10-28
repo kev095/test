@@ -9,4 +9,4 @@ export class YearValidator extends AbstractValidator {
   }
 }
 
-export default new YearValidator();
+export const yearValidator = new YearValidator();

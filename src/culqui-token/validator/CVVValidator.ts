@@ -8,5 +8,4 @@ export class CVVValidator extends AbstractValidator {
     );
   }
 }
-
-export default new CVVValidator();
+export const cvvValidator = new CVVValidator();

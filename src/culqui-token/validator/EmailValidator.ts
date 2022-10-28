@@ -9,4 +9,4 @@ export class EmailValidator extends AbstractValidator {
   }
 }
 
-export default new EmailValidator();
+export const emailValidator = new EmailValidator();

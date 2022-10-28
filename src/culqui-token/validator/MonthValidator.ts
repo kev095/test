@@ -9,4 +9,4 @@ export class MonthValidator extends AbstractValidator {
   }
 }
 
-export default new MonthValidator();
+export const monthValidator = new MonthValidator();

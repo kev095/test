@@ -1,6 +1,6 @@
 import { MongoDbServiceInterface } from "./MongoDbServiceInterface";
 import { Mongoose, connect } from 'mongoose'
-import { MongoDbConfig } from "../../culqui-token/config/db";
+import { MongoDbConfig } from "../../config/db";
 
 export class MongoDbService implements MongoDbServiceInterface {
   constructor(private readonly config: MongoDbConfig) {
