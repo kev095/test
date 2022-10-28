@@ -2,9 +2,9 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "test-culqui"
+stack_name = "culqui-test-04"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1do5w3vu70cgl"
-s3_prefix = "test-culqui"
+s3_prefix = "culqui-test-04"
 region = "us-east-1"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
