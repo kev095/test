@@ -1,9 +1,9 @@
 {
-  "include": ["./src"],
+  "include": ["./src", "app.ts"],
   "exclude": ["./node_modules"],
   "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./build",
+    "rootDir": ".",
+    "outDir": "./.aws-sam",
     "target": "ESNext",
     "strict": true,
     "preserveConstEnums": true,
