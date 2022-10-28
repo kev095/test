@@ -3,18 +3,18 @@ import ISessionCreditCard from '../interfaces/sessionCreditCard';
 import { DecodeResult } from '../interfaces/decodeResult';
 
 export function decodeCreditCard(tokenCreditCard: string): DecodeResult {
-    const algorithm: TAlgorithm = 'HS512';
+  const algorithm: TAlgorithm = 'HS512';
 
-    let result: ISessionCreditCard;
+  let result: ISessionCreditCard;
 
-    try {
-        result = decode(tokenCreditCard, 'secret', false, algorithm);
-    } catch (err) {
-        return { type: 'invalid-token' };
-    }
+  try {
+    result = decode(tokenCreditCard, 'secret', false, algorithm);
+  } catch (err) {
+    return { type: 'invalid-token' };
+  }
 
-    return {
-        type: 'valid',
-        sessioncreditCard: result,
-    };
+  return {
+    type: 'valid',
+    sessioncreditCard: result
+  };
 }
