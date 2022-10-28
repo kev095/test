@@ -24,7 +24,6 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
             };
             return response;
         }
-        //const creditCard = await CreditCardModel.findOne({ token: token });
 
         const decode: DecodeResult = decodeCreditCard(token);
         if (decode.type === 'invalid-token') {
@@ -40,9 +39,10 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
                 body: JSON.stringify({ mess: 'token has expired' }),
             };
         } else if (expiration === 'active') {
+            const { email, card_number, expiration_year, expiration_month } = decode.sessioncreditCard;
             response = {
                 statusCode: 200,
-                body: JSON.stringify(decode.sessioncreditCard),
+                body: JSON.stringify({ email, card_number, expiration_year, expiration_month }),
             };
         }
     } catch (err: unknown) {
@@ -50,7 +50,7 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
         response = {
             statusCode: 500,
             body: JSON.stringify({
-                message: err instanceof Error ? err.message : 'some error happened',
+                message: err instanceof Error ? err.message : 'some error happened --',
             }),
         };
     }
@@ -88,7 +88,7 @@ export const tokenHandler = async (event: APIGatewayProxyEvent): Promise<APIGate
         response = {
             statusCode: 500,
             body: JSON.stringify({
-                error: err instanceof yupValidationError ? err.errors : 'some error happened',
+                error: err instanceof yupValidationError ? err.errors : 'some error   happened',
             }),
         };
     }
